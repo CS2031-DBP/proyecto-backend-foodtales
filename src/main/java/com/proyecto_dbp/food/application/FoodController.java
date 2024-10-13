@@ -3,6 +3,8 @@ package com.proyecto_dbp.food.application;
 import com.proyecto_dbp.food.domain.FoodService;
 import com.proyecto_dbp.food.dto.FoodRequestDto;
 import com.proyecto_dbp.food.dto.FoodResponseDto;
+import com.proyecto_dbp.restaurant.dto.RestaurantRequestDto;
+import com.proyecto_dbp.restaurant.dto.RestaurantResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,14 @@ public class FoodController {
 
     @Autowired
     private FoodService foodService;
+
+    @PostMapping
+    public ResponseEntity<FoodResponseDto> createFood(@RequestBody FoodRequestDto foodRequestDto) {
+        FoodResponseDto createdFood = foodService.createFood(foodRequestDto);
+        return ResponseEntity.ok(createdFood);
+    }
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<FoodResponseDto> getFoodById(@PathVariable Long id) {
@@ -31,11 +41,7 @@ public class FoodController {
         return ResponseEntity.ok(foods);
     }
 
-    @PostMapping
-    public ResponseEntity<FoodResponseDto> createFood(@RequestBody FoodRequestDto foodRequestDto) {
-        FoodResponseDto createdFood = foodService.createFood(foodRequestDto);
-        return ResponseEntity.ok(createdFood);
-    }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<FoodResponseDto> updateFood(@PathVariable Long id, @RequestBody FoodRequestDto foodRequestDto) {

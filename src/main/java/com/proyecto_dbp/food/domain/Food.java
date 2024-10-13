@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data  // Lombok genera automáticamente getters, setters, toString, equals, y hashCode
+@Data
 public class Food {
 
     @Id
@@ -29,12 +29,12 @@ public class Food {
     private LocalDateTime createdDate;
 
     @Enumerated(EnumType.STRING)
-    private FoodStatus status;  // Enum para el estado del plato (disponible/no disponible)
+    private FoodStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "restaurant_id", nullable = false)  // Clave foránea hacia Restaurant
-    private Restaurant restaurant;  // Un plato pertenece a un restaurante
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private Restaurant restaurant;
 
     @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
-    private List<FoodRating> foodRatings;  // Un plato puede tener muchas calificaciones
+    private List<FoodRating> foodRatings;
 }

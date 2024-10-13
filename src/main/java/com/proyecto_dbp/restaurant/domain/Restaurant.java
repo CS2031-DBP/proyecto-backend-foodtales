@@ -55,5 +55,7 @@ public class Restaurant {
     private Set<TypeFood> typesOfFood;  // Un restaurante ofrece varios tipos de cocina
 
 
-
+    public Object getId() {
+        return restaurantId;
+    }
 }
