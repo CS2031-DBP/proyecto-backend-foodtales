@@ -1,6 +1,6 @@
 # "Foodtales: Discover, taste, and tell" 💬🍽️ 👥
 
-## CS 2031 Desarrollo Basado en Plataformas. 💻
+## CS 2031 Desarrollo Basado en Plataformas 💻
 
 ## Project Members 🤝
 
