@@ -112,16 +112,73 @@ Resolver esta necesidad es crucial porque la comida no solo satisface una necesi
 | **FoodRating**   | Representa una calificación que un usuario realiza sobre un plato específico, con una puntuación del 1 al 5 y un comentario opcional.                        | - Relación muchos a uno con **plato (Food)** y **usuario**.                                                  |
 | **RestaurantRating** | Representa una calificación que un usuario realiza sobre un restaurante, con una puntuación del 1 al 5 y un comentario opcional.                            | - Relación muchos a uno con **restaurante (Restaurant)** y **usuario**.                                       |
 ## Testing y Manejo de Errores
+
 ### Niveles de Testing Realizados: 🛠️
+
+En el proyecto **Foodtales**, se han implementado pruebas unitarias utilizando **JUnit 5**, un framework de pruebas ampliamente utilizado para proyectos Java. Los tests se encargan de verificar el correcto funcionamiento de las entidades del dominio, asegurando que las funcionalidades clave se comporten como se espera.
+
+#### Ejemplos de Casos de Prueba
+Uno de los componentes probados es la entidad `Comment`, la cual está relacionada con las publicaciones y los usuarios. A continuación se describen algunos de los casos de prueba implementados:
+
+- **Creación de un comentario**:
+   - Se verifica que un comentario se cree correctamente con todos sus atributos, como el contenido, la fecha, el usuario y el post asociado.
+   - Ejemplo: Se espera que un comentario creado tenga el mismo contenido y esté asociado a la publicación y usuario correctos.
+
+- **Actualización del contenido de un comentario**:
+   - Se prueba que es posible actualizar el contenido de un comentario y que el nuevo contenido es correctamente almacenado.
+
+- **Relaciones entre entidades**:
+   - Existen pruebas que garantizan la correcta relación entre un comentario y su publicación (`Post`) y entre un comentario y su usuario (`User`).
+   - Ejemplo: Se asegura que el comentario tenga una referencia válida a la publicación a la que pertenece y al usuario que lo creó.
+
+Estas pruebas unitarias ayudan a garantizar la estabilidad y confiabilidad del sistema, ya que cubren escenarios comunes y validan las relaciones entre las entidades del dominio.
 
 ### Resultados: 📊
 
+Los tests han permitido confirmar que las funcionalidades clave, como la creación, actualización y validación de relaciones entre entidades (`Comment`, `Post`, `User`), se comportan correctamente en diversos escenarios de prueba. Esto asegura que las interacciones principales del sistema estén funcionando de manera estable y sin errores.
+
 ### Manejo de Errores: ❌
 
+El manejo de errores en la aplicación sigue un enfoque basado en **excepciones** y **respuestas controladas** a los errores de negocio o problemas inesperados. Utilizando las características de Spring Boot, se asegura que los errores se gestionen de manera centralizada y coherente.
+
+#### Mecanismos de Manejo de Errores:
+
+- **Control de Excepciones**:
+   - La aplicación utiliza controladores de errores globales mediante la anotación `@ControllerAdvice` de Spring Boot, lo que permite capturar y manejar excepciones lanzadas durante la ejecución de las peticiones HTTP.
+   - Ejemplo: Si ocurre un error de validación o una entidad no es encontrada (por ejemplo, un comentario o usuario inexistente), se retorna una respuesta adecuada con un código de estado HTTP descriptivo como 404 (Not Found) o 400 (Bad Request).
+
+- **Mensajes de Error Detallados**:
+   - Se pueden generar mensajes de error personalizados que informen a los usuarios o desarrolladores de manera clara sobre la naturaleza del problema.
+   - Ejemplo: Un mensaje de error como "El comentario no pudo ser encontrado" puede ser enviado en una respuesta JSON cuando una búsqueda falla.
+
+- **Validaciones**:
+   - Se asegura que los datos introducidos o actualizados cumplan con los requisitos de negocio. Si una validación falla, Spring Boot dispara excepciones como `MethodArgumentNotValidException`, las cuales pueden ser manejadas en un controlador global de excepciones.
+
 ## Medidas de Seguridad Implementadas
+
 ### Seguridad de Datos: 🛡️
 
+En la aplicación **Foodtales**, se han implementado diversas medidas para garantizar la seguridad de los datos, asegurando que la información sensible esté protegida frente a accesos no autorizados. Entre las medidas clave destacan:
+
+- **Autenticación y Autorización**: Se ha implementado un sistema de autenticación basado en **JWT (JSON Web Tokens)**, el cual permite identificar a los usuarios de manera segura en cada solicitud. Además, se han configurado roles y permisos para controlar el acceso a diferentes recursos de la aplicación, asegurando que solo los usuarios autorizados puedan realizar determinadas acciones.
+
+- **Encriptación de Contraseñas**: Las contraseñas de los usuarios se almacenan de forma segura utilizando algoritmos de hashing como **BCrypt**, lo que garantiza que en caso de una filtración de la base de datos, las contraseñas no sean accesibles de forma directa.
+
+- **Conexiones Seguras (HTTPS)**: La aplicación está configurada para utilizar **HTTPS** en la comunicación entre el servidor y los clientes, asegurando que los datos transferidos estén cifrados y no puedan ser interceptados por atacantes en la red.
+
 ### Prevención de Vulnerabilidades: 🚨
+
+Para proteger la aplicación frente a vulnerabilidades comunes, se han seguido las mejores prácticas de seguridad en el desarrollo de software, algunas de las cuales incluyen:
+
+- **Protección contra Inyecciones SQL**: Se utilizan **ORM (Object-Relational Mapping)** como **Hibernate**, lo que permite interactuar con la base de datos utilizando consultas seguras, previniendo ataques de inyección SQL.
+
+- **Validación de Entradas**: Se han implementado validaciones exhaustivas en las entradas del usuario, asegurando que los datos introducidos cumplan con los formatos y reglas necesarias antes de ser procesados por el sistema. Esto ayuda a mitigar riesgos como **Cross-Site Scripting (XSS)** y **ataques de inyección**.
+
+- **Cabeceras de Seguridad**: La aplicación incluye cabeceras HTTP de seguridad configuradas correctamente, tales como **X-Content-Type-Options**, **X-Frame-Options** y **Content-Security-Policy**, lo que ayuda a prevenir ataques como **Clickjacking** y **ejecución de scripts maliciosos**.
+
+- **Gestión de Sesiones**: El sistema gestiona las sesiones de usuario de manera segura, con configuraciones para la expiración de tokens de autenticación y protección contra ataques de secuestro de sesiones (Session Hijacking).
+
+Todas estas medidas de seguridad permiten que **Foodtales** se mantenga firme frente a amenazas y garantice la integridad y confidencialidad de los datos gestionados.
 
 ## Eventos y Asincronía
 En **Foodtales**, los eventos y la asincronía juegan un papel importante para mejorar la eficiencia del sistema, especialmente en tareas que no requieren una respuesta inmediata. El envío de correos electrónicos es uno de los principales ejemplos de este enfoque. En lugar de procesar estas tareas de manera síncrona, lo cual podría generar demoras innecesarias para el usuario, se ejecutan en segundo plano, permitiendo que la experiencia sea más fluida.
