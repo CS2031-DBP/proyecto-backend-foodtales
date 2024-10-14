@@ -180,6 +180,14 @@ Para proteger la aplicación frente a vulnerabilidades comunes, se han seguido l
 
 Todas estas medidas de seguridad permiten que **Foodtales** se mantenga firme frente a amenazas y garantice la integridad y confidencialidad de los datos gestionados.
 
+
+## Deploy en AWS 
+![Screenshot from 2024-10-13 23-51-27](https://github.com/user-attachments/assets/9d77769b-4c7b-45a2-b813-8c7e7c7ced2b)
+
+Se logró realizar el deployment del backend en AWS.La ip de la captura fue la última registrada antes del último cambio del Readme.
+Se implementó un GitHub Actions para hacer el deployment auomáticamente con un push al main.
+
+
 ## Eventos y Asincronía
 En **Foodtales**, los eventos y la asincronía juegan un papel importante para mejorar la eficiencia del sistema, especialmente en tareas que no requieren una respuesta inmediata. El envío de correos electrónicos es uno de los principales ejemplos de este enfoque. En lugar de procesar estas tareas de manera síncrona, lo cual podría generar demoras innecesarias para el usuario, se ejecutan en segundo plano, permitiendo que la experiencia sea más fluida.
 ### Casos de uso del envío de correos electrónicos:
