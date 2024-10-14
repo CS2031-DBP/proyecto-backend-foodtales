@@ -29,7 +29,7 @@
 En la actualidad, existen muchas plataformas que permiten a los usuarios buscar lugares para comer, pero pocas ofrecen un espacio donde se puedan compartir de forma auténtica las experiencias, reseñas y opiniones relacionadas con la comida. Las personas no solo buscan un lugar para comer, sino también un espacio donde puedan hablar sobre sus descubrimientos, compartir reseñas, expresar sus opiniones y explorar nuevas opciones culinarias a través de las experiencias de otros usuarios. Foodtales surge como una solución que une una red social con el mundo gastronómico, permitiendo a los usuarios encontrar lugares de comida y compartir sus vivencias con una comunidad activa.
 
 ### Objetivos del proyecto: 🎯
-a) Permitir a los usuarios encontrar restaurantes, cafés, food trucks y otros lugares de comida en función de su ubicación y preferencias.  
+a) Permitir a los usuarios encontrar restaurantes, cafés, food trucks y otros lugares de comida en función de sus preferencias.  
 b) Facilitar que los usuarios puedan escribir reseñas y compartir opiniones sobre sus experiencias gastronómicas.  
 c) Crear un espacio para que los usuarios puedan debatir y compartir recomendaciones sobre diferentes tipos de cocina y platos.  
 d) Ofrecer herramientas para que los usuarios puedan seguir a otros amantes de la comida y explorar sus recomendaciones.  
