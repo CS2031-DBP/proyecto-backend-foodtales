@@ -1,4 +1,4 @@
-# "Foodtales: Discover, taste, and tell" 💬🍽️ 👥
+#"Foodtales: Discover, taste, and tell" 💬🍽️👥
 
 ## CS 2031 Desarrollo Basado en Plataformas 💻
 
