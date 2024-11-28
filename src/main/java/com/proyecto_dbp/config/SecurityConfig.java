@@ -62,7 +62,8 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173", "https://main.d3dhipwtqoy0c2.amplifyapp.com/")
+                        .allowedOriginPatterns("http://localhost:*")  // Permitir todos los puertos de localhost
+                        .allowedOrigins("http://10.0.2.2:8080", "http://localhost:8081", "http://localhost:8080", "http://localhost:5173", "https://main.d3dhipwtqoy0c2.amplifyapp.com/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
